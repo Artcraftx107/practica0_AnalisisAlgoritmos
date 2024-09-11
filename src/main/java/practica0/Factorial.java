@@ -3,27 +3,29 @@
 package practica0;
 
 public class Factorial {
-    private int sumTot =0;
-     public int calcFactorial(int num){
-         if(num<0){
-             throw new IllegalArgumentException("El numero al que se le quiere calcular el factorial no puede ser negativo");
-         }
-         int factFinal = 0;
-         for(int i = 0; i<=num; i++){
-             factFinal*=i;
-         }
-         return factFinal;
+
+    // Método para calcular el factorial de un número usando un bucle
+    public int calcFactorial(int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("El número no puede ser negativo");
+        }
+
+        int factFinal = 1;  // El factorial de 0 es 1, y comenzamos multiplicando
+        for (int i = 1; i <= num; i++) {
+            factFinal *= i;
+        }
+        return factFinal;
     }
 
     /*Ejercicio 12 del pdf Practica 0*/
-    public int factSum(int n){
-        return sumTot*=n;
-    }
-    public int calcPorRecursividad(int n){
-        int aux = 0;
-        for(int i = 0; i<n; i++){
-            aux*=factSum(i);
+    // Método para calcular el factorial usando recursión
+    public int calcFactorialRecursivo(int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("El número no puede ser negativo");
         }
-        return aux;
+        if (num == 0 || num == 1) { // Caso base
+            return 1;
+        }
+        return num * calcFactorialRecursivo(num - 1);  // Paso recursivo
     }
 }
